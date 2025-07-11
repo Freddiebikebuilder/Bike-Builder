@@ -12,7 +12,7 @@ frames.forEach(frame => {
 
     buildArea.style.display = 'block';
 
-    // Use capitalized folder names here
+    // Update image path with capitalized folder names
     selectedFrameImg.src = `Images/Frames/${selectedFrame}.webp`;
     selectedFrameImg.alt = selectedFrame.replace(/-/g, ' ');
   });
