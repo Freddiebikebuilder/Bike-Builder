@@ -1,25 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bike Builder</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build A Bike</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>Choose Your Frame</h1>
-    <p>Then customize your build</p>
+    <h1>Build A Bike</h1>
+    <p>Select your frame to begin</p>
   </header>
 
-  <main id="frameSelection">
-    <!-- Frame options go here -->
-  </main>
+  <main>
+    <section id="frame-selection">
+      <!-- Frame cards go here -->
+    </section>
 
-  <div id="customisation" style="display: none;">
-    <h2>Now choose your parts</h2>
-    <!-- Dropdowns for fork, wheels, etc. -->
-  </div>
+    <section id="parts-builder" style="display: none;">
+      <h2>Customize Your Build</h2>
+      <form id="partsForm">
+        <label for="fork">Fork</label>
+        <select id="fork">
+          <option value="">-- Select Fork --</option>
+          <option value="Fox 36">Fox 36</option>
+          <option value="RockShox Lyrik">RockShox Lyrik</option>
+        </select>
+
+        <label for="wheels">Wheels</label>
+        <select id="wheels">
+          <option value="">-- Select Wheels --</option>
+          <option value="DT Swiss">DT Swiss</option>
+          <option value="Hunt Enduro">Hunt Enduro</option>
+        </select>
+
+        <label for="drivetrain">Drivetrain</label>
+        <select id="drivetrain">
+          <option value="">-- Select Drivetrain --</option>
+          <option value="SRAM GX">SRAM GX</option>
+          <option value="Shimano SLX">Shimano SLX</option>
+        </select>
+      </form>
+
+      <div id="buildPreview">
+        <img id="selectedFrame" src="" alt="Selected Frame" />
+      </div>
+
+      <div id="priceDisplay">Total: £0</div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
