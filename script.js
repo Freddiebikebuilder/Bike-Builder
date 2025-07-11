@@ -4,21 +4,21 @@ const selectedFrameImg = document.getElementById('selectedFrame');
 
 frames.forEach(frame => {
   frame.addEventListener('click', () => {
-    // Deselect all
+    // Remove 'selected' class from all frames
     frames.forEach(f => f.classList.remove('selected'));
 
-    // Mark clicked one
+    // Add 'selected' class to the clicked frame
     frame.classList.add('selected');
 
-    // Store selected frame
+    // Get the selected frame's data-name
     const selectedFrame = frame.dataset.name;
     console.log('Selected Frame:', selectedFrame);
 
-    // Show build area
+    // Show the build area
     buildArea.style.display = 'block';
 
-    // Update preview image and alt text
-    selectedFrameImg.src = `Images/Frames/${selectedFrame}.webp`; // CAPITAL I & F here!
+    // Update the preview image src and alt text
+    selectedFrameImg.src = `Images/Frames/${selectedFrame}.webp`; // Match folder and capitalization exactly!
     selectedFrameImg.alt = selectedFrame.replace(/-/g, ' ');
   });
 });
