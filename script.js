@@ -1,6 +1,7 @@
 const frames = document.querySelectorAll('.frame');
 const buildArea = document.getElementById('build-area');
 const selectedFrameImg = document.getElementById('selectedFrame');
+const searchInput = document.getElementById('searchInput');
 
 frames.forEach(frame => {
   frame.addEventListener('click', () => {
@@ -20,5 +21,19 @@ frames.forEach(frame => {
     // Update the preview image src and alt text
     selectedFrameImg.src = `Images/Frames/${selectedFrame}.webp`; // Match folder and capitalization exactly!
     selectedFrameImg.alt = selectedFrame.replace(/-/g, ' ');
+  });
+});
+
+// Search input event to filter frames by name
+searchInput.addEventListener('input', () => {
+  const searchTerm = searchInput.value.toLowerCase();
+
+  frames.forEach(frame => {
+    const frameName = frame.dataset.name.toLowerCase();
+    if (frameName.includes(searchTerm)) {
+      frame.style.display = '';  // show frame
+    } else {
+      frame.style.display = 'none';  // hide frame
+    }
   });
 });
