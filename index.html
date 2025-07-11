@@ -31,11 +31,39 @@
     </div>
   </section>
 
-  <section id="build-area" style="display: none;">
-    <h2>Start Adding Parts</h2>
-    <!-- Parts form and preview will go here -->
-  </section>
-</main>
+ <section id="build-area" style="display: none;">
+  <h2>Start Adding Parts</h2>
+  <form id="partsForm">
+    <label for="fork">Fork</label>
+    <select id="fork" name="fork">
+      <option value="">-- Select Fork --</option>
+      <option value="Fox 36">Fox 36</option>
+      <option value="RockShox Lyrik">RockShox Lyrik</option>
+    </select>
+
+    <label for="wheels">Wheels</label>
+    <select id="wheels" name="wheels">
+      <option value="">-- Select Wheels --</option>
+      <option value="DT Swiss">DT Swiss</option>
+      <option value="Hunt Enduro">Hunt Enduro</option>
+    </select>
+
+    <label for="drivetrain">Drivetrain</label>
+    <select id="drivetrain" name="drivetrain">
+      <option value="">-- Select Drivetrain --</option>
+      <option value="SRAM GX">SRAM GX</option>
+      <option value="Shimano SLX">Shimano SLX</option>
+    </select>
+  </form>
+
+  <div id="buildPreview" style="margin-top: 20px;">
+    <h3>Selected Frame:</h3>
+    <img id="selectedFrame" src="" alt="Selected Frame" width="300" />
+  </div>
+
+  <div id="priceDisplay" style="margin-top: 20px;">Total: £0</div>
+</section>
+
 
 
   <script src="script.js"></script>
