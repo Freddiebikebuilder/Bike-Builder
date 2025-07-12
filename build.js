@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Load frame image
+  // Load selected frame image
   const frameImg = document.getElementById('selectedFrame');
   frameImg.src = `Images/Frames/${selectedFrame}.webp`;
   frameImg.alt = selectedFrame.replace(/-/g, ' ');
@@ -16,14 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.part-slider img').forEach(img => {
     img.addEventListener('click', () => {
       const partType = img.dataset.part;
+      const overlayFile = img.dataset.overlay; // get overlay filename
 
       if (partType === 'fork') {
         const forkImg = document.getElementById('forkImage');
-        forkImg.src = img.src;
+        forkImg.src = `Images/Parts/Forks/${overlayFile}`;
         forkImg.alt = img.alt;
       }
 
-      // Add more part types here if needed
+      // Add more part types here as needed
     });
   });
 });
