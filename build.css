@@ -5,7 +5,8 @@ body {
   padding: 0;
   background: #f4f4f4;
   height: 100vh;
-  overflow: hidden;
+  overflow-y: auto; /* allow vertical scrolling */
+  overflow-x: hidden; /* prevent horizontal scrolling */
 }
 
 header {
@@ -20,7 +21,7 @@ header {
 /* Main layout with sidebar and main content */
 .layout {
   display: flex;
-  height: calc(100vh - 72px);
+  min-height: calc(100vh - 72px); /* allow layout to grow */
   overflow: hidden;
 }
 
@@ -60,10 +61,11 @@ header {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 10px 20px 0; /* Removed bottom padding */
-  gap: 5px; /* Reduced gap */
+  padding: 10px 20px 0;
+  gap: 5px;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-y: auto; /* allow scroll if content overflows */
+  overflow-x: hidden;
   position: relative;
 }
 
@@ -77,7 +79,7 @@ header {
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px 0 5px; /* Reduced bottom padding */
+  padding: 15px 0 5px;
   overflow: hidden;
   min-height: 520px;
 }
@@ -121,7 +123,7 @@ header {
 /* Parts slider at bottom */
 .parts-slider-area {
   width: 100%;
-  padding: 0 15px 8px; /* Removed top padding, reduced bottom padding */
+  padding: 0 15px 8px;
   background: #fafafa;
   border-top: 1px solid #ccc;
   flex-shrink: 0;
