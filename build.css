@@ -3,10 +3,6 @@ body {
   margin: 0;
   padding: 0;
   background: #f4f4f4;
-  overflow: hidden;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 header {
@@ -14,50 +10,43 @@ header {
   color: white;
   padding: 20px;
   text-align: center;
-  flex-shrink: 0;
 }
 
-.build-container {
+.layout {
   display: flex;
-  flex: 1;
+  height: 100vh;
   overflow: hidden;
 }
 
 .part-menu {
   width: 200px;
-  background-color: #ffffff;
-  border-right: 1px solid #ccc;
+  background-color: #e0e0e0;
   padding: 20px;
-  box-sizing: border-box;
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .part-menu button {
-  display: block;
-  width: 100%;
-  margin-bottom: 15px;
   padding: 10px;
-  background-color: #1a73e8;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .part-menu button:hover {
-  background-color: #155ab6;
+  background-color: #d0d0d0;
 }
 
-.content-area {
+.build-container {
   flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  padding: 20px;
   gap: 30px;
+  overflow-y: auto;
 }
 
 .frame-area {
@@ -93,34 +82,24 @@ header {
   z-index: 10;
 }
 
+.parts-slider-area {
+  margin-top: 20px;
+}
+
 .parts-slider-area h2 {
   font-size: 20px;
   margin-bottom: 10px;
-  text-align: center;
 }
 
 .part-slider {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   gap: 15px;
-  padding-bottom: 10px;
+  padding: 10px 0;
   scroll-snap-type: x mandatory;
   margin-bottom: 30px;
-  scrollbar-width: thin;
-  scrollbar-color: #999 #e0e0e0;
-}
-
-.part-slider::-webkit-scrollbar {
-  height: 10px;
-}
-
-.part-slider::-webkit-scrollbar-thumb {
-  background-color: #999;
-  border-radius: 10px;
-}
-
-.part-slider::-webkit-scrollbar-track {
-  background-color: #e0e0e0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .part-slider img {
