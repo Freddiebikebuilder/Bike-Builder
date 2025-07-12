@@ -29,10 +29,13 @@ header {
   position: relative;
   max-width: 500px;
   width: 90%;
+  height: 350px; /* fixed height for uniformity */
 }
 
 .frame-preview img {
   width: 100%;
+  height: 100%; /* fill container */
+  object-fit: contain; /* maintain aspect ratio, fit inside */
   border-radius: 10px;
   display: block;
 }
@@ -42,6 +45,8 @@ header {
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%; /* match frame image size */
+  object-fit: contain;
   opacity: 0.95;
   pointer-events: none;
   z-index: 10;
