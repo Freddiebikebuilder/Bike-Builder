@@ -124,7 +124,7 @@ header {
   padding: 10px 15px 15px;
   background: #fafafa;
   flex-shrink: 0;
-  max-height: 200px;
+  max-height: 300px;
   overflow: hidden;
   box-sizing: border-box;
 }
