@@ -24,13 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         forkImg.alt = img.alt;
       }
 
-      if (partType === 'wheels') {
-        const wheelsImg = document.getElementById('wheelsImage');
-        wheelsImg.src = `Images/Parts/Wheels/Overlays/${overlayFile}`;
-        wheelsImg.alt = img.alt;
-      }
-
-      // Add more part types here as needed
+      // Example for wheels overlay if you add wheels overlay img tag and id
+      // if (partType === 'wheels') {
+      //   const wheelsImg = document.getElementById('wheelsImage');
+      //   wheelsImg.src = `Images/Parts/Wheels/Overlays/${overlayFile}`;
+      //   wheelsImg.alt = img.alt;
+      // }
     });
   });
 });
