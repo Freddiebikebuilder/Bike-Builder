@@ -12,25 +12,39 @@ document.addEventListener('DOMContentLoaded', () => {
   frameImg.src = `Images/Frames/${selectedFrame}.webp`;
   frameImg.alt = selectedFrame.replace(/-/g, ' ');
 
-  // Parts data with relative paths to previews and overlays
+  // Parts data with prices added
   const categories = {
     forks: [
-      { name: "Fox 36", preview: "Fox-36-Preview.webp", overlay: "Fox-36-Overlay.webp" },
-      { name: "RockShox Lyrik", preview: "RockShox-Lyrik-Preview.webp", overlay: "RockShox-Lyrik-Overlay.webp" }
+      { name: "Fox 36", preview: "Fox-36-Preview.webp", overlay: "Fox-36-Overlay.webp", price: 899 },
+      { name: "RockShox Lyrik", preview: "RockShox-Lyrik-Preview.webp", overlay: "RockShox-Lyrik-Overlay.webp", price: 779 }
     ],
     wheels: [
-      { name: "DT Swiss", preview: "DT-Swiss-Preview.webp", overlay: "DT-Swiss-Overlay.webp" },
-      { name: "Hunt Enduro", preview: "Hunt-Enduro-Preview.webp", overlay: "Hunt-Enduro-Overlay.webp" }
+      { name: "DT Swiss", preview: "DT-Swiss-Preview.webp", overlay: "DT-Swiss-Overlay.webp", price: 649 },
+      { name: "Hunt Enduro", preview: "Hunt-Enduro-Preview.webp", overlay: "Hunt-Enduro-Overlay.webp", price: 549 }
     ],
     handlebars: [
-      { name: "Race Face Atlas", preview: "Atlas-Preview.webp", overlay: "Atlas-Overlay.webp" },
-      { name: "Renthal Fatbar", preview: "Fatbar-Preview.webp", overlay: "Fatbar-Overlay.webp" }
+      { name: "Race Face Atlas", preview: "Atlas-Preview.webp", overlay: "Atlas-Overlay.webp", price: 89 },
+      { name: "Renthal Fatbar", preview: "Fatbar-Preview.webp", overlay: "Fatbar-Overlay.webp", price: 109 }
     ]
   };
 
   const partSlider = document.getElementById('partSlider');
   const partsTitle = document.getElementById('partsTitle');
   const buttons = document.querySelectorAll('.part-menu button');
+  const priceEstimateDisplay = document.getElementById('priceEstimate');
+
+  // Track selected prices by category
+  const selectedPrices = {
+    forks: 0,
+    wheels: 0,
+    handlebars: 0
+  };
+
+  // Function to update the estimated price text
+  function updateEstimatedPrice() {
+    const total = selectedPrices.forks + selectedPrices.wheels + selectedPrices.handlebars;
+    priceEstimateDisplay.textContent = `Estimated Price: £${total}`;
+  }
 
   // Function to load parts for a category
   function loadParts(category) {
@@ -57,6 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
           overlayImg.src = `Images/Parts/${category.charAt(0).toUpperCase() + category.slice(1)}/Overlays/${part.overlay}`;
           overlayImg.alt = part.name;
         }
+
+        // Update the selected price for this category and refresh total
+        selectedPrices[category] = part.price;
+        updateEstimatedPrice();
       });
 
       partSlider.appendChild(img);
