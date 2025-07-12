@@ -16,15 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.part-slider img').forEach(img => {
     img.addEventListener('click', () => {
       const partType = img.dataset.part;
-      const overlayFile = img.dataset.overlay; // get overlay filename
+      const overlayFile = img.dataset.overlay;
 
       if (partType === 'fork') {
         const forkImg = document.getElementById('forkImage');
-        forkImg.src = `Images/Parts/Forks/${overlayFile}`;
+        forkImg.src = `Images/Parts/Forks/Overlays/${overlayFile}`;
         forkImg.alt = img.alt;
       }
 
-      // Add more part types here as needed
+      // You can add similar blocks for wheels, drivetrain, etc.
+      // Example:
+      // if (partType === 'wheels') {
+      //   const wheelsImg = document.getElementById('wheelsImage');
+      //   wheelsImg.src = `Images/Parts/Wheels/Overlays/${overlayFile}`;
+      //   wheelsImg.alt = img.alt;
+      // }
     });
   });
 });
