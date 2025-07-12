@@ -14,52 +14,65 @@ header {
 
 .build-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 20px;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 30px;
 }
 
-.parts-selection {
-  flex: 1;
-  min-width: 300px;
+.frame-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.parts-selection h2 {
-  margin-top: 30px;
+.frame-preview {
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+}
+
+.frame-preview img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.overlay-part {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.parts-slider-area {
+  margin-top: 20px;
+}
+
+.parts-slider-area h2 {
   font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .part-slider {
   display: flex;
   overflow-x: auto;
   gap: 15px;
-  padding: 10px 0;
+  padding-bottom: 10px;
   scroll-snap-type: x mandatory;
+  margin-bottom: 30px;
 }
 
 .part-slider img {
-  width: 160px;
+  width: 150px;
   height: auto;
-  border-radius: 10px;
-  scroll-snap-align: start;
+  border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  scroll-snap-align: start;
 }
 
 .part-slider img:hover {
   transform: scale(1.05);
 }
-
-.frame-preview {
-  flex: 1;
-  max-width: 400px;
-  text-align: center;
-}
-
-.frame-preview img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
