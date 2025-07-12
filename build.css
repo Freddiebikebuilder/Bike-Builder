@@ -19,7 +19,7 @@ header {
 /* Main layout with sidebar and main content */
 .layout {
   display: flex;
-  height: calc(100vh - 72px); /* Full viewport height minus header height */
+  height: calc(100vh - 72px); /* full viewport height minus header */
   overflow: hidden;
 }
 
