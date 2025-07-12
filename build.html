@@ -11,32 +11,31 @@
     <h1>Bike Builder</h1>
   </header>
 
-  <main>
-    <div class="build-container">
-      
-      <div class="parts-selection">
-        <h2>Choose Your Fork</h2>
-        <div class="part-slider" id="forkSlider">
-          <img src="Images/Parts/Forks/Fox-36.webp" alt="Fox 36" />
-          <img src="Images/Parts/Forks/RockShox-Lyrik.webp" alt="RockShox Lyrik" />
-        </div>
-
-        <h2>Choose Your Wheels</h2>
-        <div class="part-slider" id="wheelSlider">
-          <img src="Images/Parts/Wheels/DT-Swiss.webp" alt="DT Swiss" />
-          <img src="Images/Parts/Wheels/Hunt-Enduro.webp" alt="Hunt Enduro" />
-        </div>
-      </div>
-
+  <main class="build-container">
+    <div class="frame-area">
+      <h2>Selected Frame</h2>
       <div class="frame-preview">
-        <h2>Selected Frame</h2>
         <img id="selectedFrame" src="" alt="Selected Frame" />
+        <img id="forkImage" class="overlay-part" src="" alt="Selected Fork" />
+        <!-- You can add more overlay images here for wheels, drivetrain, etc. -->
+      </div>
+    </div>
+
+    <div class="parts-slider-area">
+      <h2>Choose Your Fork</h2>
+      <div class="part-slider">
+        <img src="Images/Parts/Forks/Fox-36.webp" alt="Fox 36" data-part="fork" />
+        <img src="Images/Parts/Forks/RockShox-Lyrik.webp" alt="RockShox Lyrik" data-part="fork" />
       </div>
 
+      <h2>Choose Your Wheels</h2>
+      <div class="part-slider">
+        <img src="Images/Parts/Wheels/DT-Swiss.webp" alt="DT Swiss" data-part="wheels" />
+        <img src="Images/Parts/Wheels/Hunt-Enduro.webp" alt="Hunt Enduro" data-part="wheels" />
+      </div>
     </div>
   </main>
 
   <script src="build.js"></script>
 </body>
 </html>
-
