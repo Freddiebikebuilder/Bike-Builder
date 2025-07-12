@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+ddocument.addEventListener('DOMContentLoaded', () => {
   const selectedFrame = localStorage.getItem('selectedFrame');
 
   if (!selectedFrame) {
@@ -7,78 +7,45 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Load selected frame image
   const frameImg = document.getElementById('selectedFrame');
   frameImg.src = `Images/Frames/${selectedFrame}.webp`;
   frameImg.alt = selectedFrame.replace(/-/g, ' ');
 
-  const partSlider = document.getElementById('partSlider');
-  const partsTitle = document.getElementById('partsTitle');
-
-  const partsData = {
+  const categories = {
     forks: [
-      {
-        preview: 'Fox-36-Preview.webp',
-        overlay: 'Fox-36-Overlay.webp',
-        name: 'Fox 36'
-      },
-      {
-        preview: 'RockShox-Lyrik-Preview.webp',
-        overlay: 'RockShox-Lyrik-Overlay.webp',
-        name: 'RockShox Lyrik'
-      }
+      { name: "Fox 36", preview: "Fox-36-Preview.webp", overlay: "Fox-36-Overlay.webp" },
+      { name: "RockShox Lyrik", preview: "RockShox-Lyrik-Preview.webp", overlay: "RockShox-Lyrik-Overlay.webp" }
     ],
     wheels: [
-      {
-        preview: 'DT-Swiss-Preview.webp',
-        overlay: 'DT-Swiss-Overlay.webp',
-        name: 'DT Swiss'
-      },
-      {
-        preview: 'Hunt-Enduro-Preview.webp',
-        overlay: 'Hunt-Enduro-Overlay.webp',
-        name: 'Hunt Enduro'
-      }
+      { name: "DT Swiss", preview: "DT-Swiss-Preview.webp", overlay: "DT-Swiss-Overlay.webp" },
+      { name: "Hunt Enduro", preview: "Hunt-Enduro-Preview.webp", overlay: "Hunt-Enduro-Overlay.webp" }
     ],
     handlebars: [
-      {
-        preview: 'RaceFace-Atlas-Preview.webp',
-        overlay: 'RaceFace-Atlas-Overlay.webp',
-        name: 'RaceFace Atlas'
-      },
-      {
-        preview: 'Renthal-Fatbar-Preview.webp',
-        overlay: 'Renthal-Fatbar-Overlay.webp',
-        name: 'Renthal Fatbar'
-      }
+      { name: "Race Face Atlas", preview: "Atlas-Preview.webp", overlay: "Atlas-Overlay.webp" },
+      { name: "Renthal Fatbar", preview: "Fatbar-Preview.webp", overlay: "Fatbar-Overlay.webp" }
     ]
   };
 
-  // Load part images into slider
+  const partSlider = document.getElementById('partSlider');
+  const partsTitle = document.getElementById('partsTitle');
+
   function loadParts(category) {
     partSlider.innerHTML = '';
     partsTitle.textContent = `Choose Your ${category.charAt(0).toUpperCase() + category.slice(1)}`;
 
-    partsData[category].forEach(part => {
+    categories[category].forEach(part => {
       const img = document.createElement('img');
-      img.src = `Images/Parts/${capitalize(category)}/Previews/${part.preview}`;
+      img.src = `Images/Parts/${category.charAt(0).toUpperCase() + category.slice(1)}/Previews/${part.preview}`;
       img.alt = part.name;
       img.dataset.part = category;
       img.dataset.overlay = part.overlay;
-      img.classList.add('part-option');
       partSlider.appendChild(img);
     });
 
-    attachPartClickListeners();
+    addClickEvents();
   }
 
-  // Capitalize function for folder names
-  function capitalize(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }
-
-  // Add overlay when part is clicked
-  function attachPartClickListeners() {
+  function addClickEvents() {
     document.querySelectorAll('.part-slider img').forEach(img => {
       img.addEventListener('click', () => {
         const partType = img.dataset.part;
@@ -86,14 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const overlayImg = document.getElementById(`${partType}Image`);
 
         if (overlayImg) {
-          overlayImg.src = `Images/Parts/${capitalize(partType)}/Overlays/${overlayFile}`;
+          overlayImg.src = `Images/Parts/${partType.charAt(0).toUpperCase() + partType.slice(1)}/Overlays/${overlayFile}`;
           overlayImg.alt = img.alt;
         }
       });
     });
   }
 
-  // Listen for sidebar clicks
   document.querySelectorAll('.part-menu button').forEach(button => {
     button.addEventListener('click', () => {
       const category = button.dataset.category;
