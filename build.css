@@ -36,6 +36,42 @@ header {
   box-sizing: border-box;
   overflow-y: auto;
   flex-shrink: 0;
+
+  /* === Overlay System for Bike Builder === */
+
+.bike-overlay-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bike-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#selectedFrame {
+  z-index: 1;
+}
+
+#forksImage {
+  z-index: 2;
+}
+
+#wheelsImage {
+  z-index: 3;
+}
+
+#handlebarsImage {
+  z-index: 4;
+}
+
   border-right: 1px solid #ccc;
 }
 
