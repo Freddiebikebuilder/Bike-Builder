@@ -1,4 +1,4 @@
-ddocument.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const selectedFrame = localStorage.getItem('selectedFrame');
 
   if (!selectedFrame) {
@@ -7,10 +7,12 @@ ddocument.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // Set frame image
   const frameImg = document.getElementById('selectedFrame');
   frameImg.src = `Images/Frames/${selectedFrame}.webp`;
   frameImg.alt = selectedFrame.replace(/-/g, ' ');
 
+  // Parts data with relative paths to previews and overlays
   const categories = {
     forks: [
       { name: "Fox 36", preview: "Fox-36-Preview.webp", overlay: "Fox-36-Overlay.webp" },
@@ -28,7 +30,9 @@ ddocument.addEventListener('DOMContentLoaded', () => {
 
   const partSlider = document.getElementById('partSlider');
   const partsTitle = document.getElementById('partsTitle');
+  const buttons = document.querySelectorAll('.part-menu button');
 
+  // Function to load parts for a category
   function loadParts(category) {
     partSlider.innerHTML = '';
     partsTitle.textContent = `Choose Your ${category.charAt(0).toUpperCase() + category.slice(1)}`;
@@ -39,34 +43,40 @@ ddocument.addEventListener('DOMContentLoaded', () => {
       img.alt = part.name;
       img.dataset.part = category;
       img.dataset.overlay = part.overlay;
-      partSlider.appendChild(img);
-    });
+      img.title = part.name;
 
-    addClickEvents();
-  }
-
-  function addClickEvents() {
-    document.querySelectorAll('.part-slider img').forEach(img => {
       img.addEventListener('click', () => {
-        const partType = img.dataset.part;
-        const overlayFile = img.dataset.overlay;
-        const overlayImg = document.getElementById(`${partType}Image`);
+        // Clear 'selected' class from all parts
+        partSlider.querySelectorAll('img').forEach(i => i.classList.remove('selected'));
+        // Mark clicked part as selected
+        img.classList.add('selected');
 
+        // Set overlay image
+        const overlayImg = document.getElementById(`${category}Image`);
         if (overlayImg) {
-          overlayImg.src = `Images/Parts/${partType.charAt(0).toUpperCase() + partType.slice(1)}/Overlays/${overlayFile}`;
-          overlayImg.alt = img.alt;
+          overlayImg.src = `Images/Parts/${category.charAt(0).toUpperCase() + category.slice(1)}/Overlays/${part.overlay}`;
+          overlayImg.alt = part.name;
         }
       });
+
+      partSlider.appendChild(img);
     });
   }
 
-  document.querySelectorAll('.part-menu button').forEach(button => {
+  // Sidebar buttons click handlers
+  buttons.forEach(button => {
     button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      buttons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
+
+      // Load parts for selected category
       const category = button.dataset.category;
       loadParts(category);
     });
   });
 
-  // Load default category
+  // Load default category (forks)
   loadParts('forks');
 });
