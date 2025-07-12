@@ -7,10 +7,23 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // Frame prices data
+  const framePrices = {
+    "Forbidden-Supernought": 3500,
+    "Propain-Tyee": 3000,
+    "Trek-Remedy": 2800,
+    "Specialized-Enduro": 3200,
+    "Santa-Cruz-Nomad": 3700
+  };
+
   // Set frame image
   const frameImg = document.getElementById('selectedFrame');
   frameImg.src = `Images/Frames/${selectedFrame}.webp`;
   frameImg.alt = selectedFrame.replace(/-/g, ' ');
+
+  // Show frame price
+  const framePriceDisplay = document.getElementById('framePrice');
+  framePriceDisplay.textContent = `Frame Price: £${framePrices[selectedFrame] || 0}`;
 
   // Parts data with prices added
   const categories = {
@@ -33,8 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.part-menu button');
   const priceEstimateDisplay = document.getElementById('priceEstimate');
 
-  // Track selected prices by category
+  // Track selected prices by category, including frame price
   const selectedPrices = {
+    frame: framePrices[selectedFrame] || 0,
     forks: 0,
     wheels: 0,
     handlebars: 0
@@ -42,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to update the estimated price text
   function updateEstimatedPrice() {
-    const total = selectedPrices.forks + selectedPrices.wheels + selectedPrices.handlebars;
+    const total = selectedPrices.frame + selectedPrices.forks + selectedPrices.wheels + selectedPrices.handlebars;
     priceEstimateDisplay.textContent = `Estimated Price: £${total}`;
   }
 
@@ -97,4 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load default category (forks)
   loadParts('forks');
+
+  // Initial update of price
+  updateEstimatedPrice();
 });
