@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const frameImg = document.getElementById('selectedFrame');
-  frameImg.src = `Images/Frames/${selectedFrame}.webp`;
+  frameImg.src = `Images/Frames/${selectedFrame}.png`;
   frameImg.alt = selectedFrame.replace(/-/g, ' ');
 
   document.getElementById('framePrice').textContent = `Frame Price: £${framePrices[selectedFrame] || 0}`;
@@ -36,20 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const categories = {
     forks: [
-      { name: "Fox 36", preview: "Fox-36-Preview.webp", overlay: "Fox-36-Overlay.webp", price: 899 },
-      { name: "RockShox Lyrik", preview: "RockShox-Lyrik-Preview.webp", overlay: "RockShox-Lyrik-Overlay.webp", price: 779 }
+      { name: "Fox 36", preview: "Fox-36-Preview.png", overlay: "Fox-36-Overlay.png", price: 899 },
+      { name: "RockShox Lyrik", preview: "RockShox-Lyrik-Preview.png", overlay: "RockShox-Lyrik-Overlay.png", price: 779 }
     ],
     wheels: [
-      { name: "DT Swiss", preview: "DT-Swiss-Preview.webp", overlay: "DT-Swiss-Overlay.webp", price: 649 },
-      { name: "Hunt Enduro", preview: "Hunt-Enduro-Preview.webp", overlay: "Hunt-Enduro-Overlay.webp", price: 549 }
+      { name: "DT Swiss", preview: "DT-Swiss-Preview.png", overlay: "DT-Swiss-Overlay.png", price: 649 },
+      { name: "Hunt Enduro", preview: "Hunt-Enduro-Preview.png", overlay: "Hunt-Enduro-Overlay.png", price: 549 }
     ],
     handlebars: [
-      { name: "Race Face Atlas", preview: "Atlas-Preview.webp", overlay: "Atlas-Overlay.webp", price: 89 },
-      { name: "Renthal Fatbar", preview: "Fatbar-Preview.webp", overlay: "Fatbar-Overlay.webp", price: 109 }
+      { name: "Race Face Atlas", preview: "Atlas-Preview.png", overlay: "Atlas-Overlay.png", price: 89 },
+      { name: "Renthal Fatbar", preview: "Fatbar-Preview.png", overlay: "Fatbar-Overlay.png", price: 109 }
     ],
     rearShocks: [
-      { name: "RockShox Super Deluxe", preview: "SuperDeluxe-Preview.webp", overlay: "SuperDeluxe-Overlay.webp", price: 499 },
-      { name: "Fox DHX2 Coil", preview: "DHX2-Preview.webp", overlay: "DHX2-Overlay.webp", price: 629 }
+      { name: "RockShox Super Deluxe", preview: "SuperDeluxe-Preview.png", overlay: "SuperDeluxe-Overlay.png", price: 499 },
+      { name: "Fox DHX2 Coil", preview: "DHX2-Preview.png", overlay: "DHX2-Overlay.png", price: 629 }
     ]
   };
 
@@ -95,8 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
       loadParts(category);
     });
   });
-
-
 
   // Load default (forks)
   loadParts('forks');
