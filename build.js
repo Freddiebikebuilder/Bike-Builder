@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Frame prices data
   const framePrices = {
     "Forbidden-Supernought": 3500,
     "Propain-Tyee": 3000,
@@ -16,16 +15,25 @@ document.addEventListener('DOMContentLoaded', () => {
     "Santa-Cruz-Nomad": 3700
   };
 
-  // Set frame image
   const frameImg = document.getElementById('selectedFrame');
   frameImg.src = `Images/Frames/${selectedFrame}.webp`;
   frameImg.alt = selectedFrame.replace(/-/g, ' ');
 
-  // Show frame price
-  const framePriceDisplay = document.getElementById('framePrice');
-  framePriceDisplay.textContent = `Frame Price: £${framePrices[selectedFrame] || 0}`;
+  document.getElementById('framePrice').textContent = `Frame Price: £${framePrices[selectedFrame] || 0}`;
 
-  // Parts data with prices added
+  const selectedPrices = {
+    frame: framePrices[selectedFrame] || 0,
+    forks: 0,
+    wheels: 0,
+    handlebars: 0,
+    rearShocks: 0
+  };
+
+  function updateEstimatedPrice() {
+    const total = Object.values(selectedPrices).reduce((a, b) => a + b, 0);
+    document.getElementById('priceEstimate').textContent = `Estimated Price: £${total}`;
+  }
+
   const categories = {
     forks: [
       { name: "Fox 36", preview: "Fox-36-Preview.webp", overlay: "Fox-36-Overlay.webp", price: 899 },
@@ -38,29 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
     handlebars: [
       { name: "Race Face Atlas", preview: "Atlas-Preview.webp", overlay: "Atlas-Overlay.webp", price: 89 },
       { name: "Renthal Fatbar", preview: "Fatbar-Preview.webp", overlay: "Fatbar-Overlay.webp", price: 109 }
+    ],
+    rearShocks: [
+      { name: "RockShox Super Deluxe", preview: "SuperDeluxe-Preview.webp", overlay: "SuperDeluxe-Overlay.webp", price: 499 },
+      { name: "Fox DHX2 Coil", preview: "DHX2-Preview.webp", overlay: "DHX2-Overlay.webp", price: 629 }
     ]
   };
 
   const partSlider = document.getElementById('partSlider');
   const partsTitle = document.getElementById('partsTitle');
   const buttons = document.querySelectorAll('.part-menu button');
-  const priceEstimateDisplay = document.getElementById('priceEstimate');
 
-  // Track selected prices by category, including frame price
-  const selectedPrices = {
-    frame: framePrices[selectedFrame] || 0,
-    forks: 0,
-    wheels: 0,
-    handlebars: 0
-  };
-
-  // Function to update the estimated price text
-  function updateEstimatedPrice() {
-    const total = selectedPrices.frame + selectedPrices.forks + selectedPrices.wheels + selectedPrices.handlebars;
-    priceEstimateDisplay.textContent = `Estimated Price: £${total}`;
-  }
-
-  // Function to load parts for a category
   function loadParts(category) {
     partSlider.innerHTML = '';
     partsTitle.textContent = `Choose Your ${category.charAt(0).toUpperCase() + category.slice(1)}`;
@@ -69,24 +65,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = document.createElement('img');
       img.src = `Images/Parts/${category.charAt(0).toUpperCase() + category.slice(1)}/Previews/${part.preview}`;
       img.alt = part.name;
-      img.dataset.part = category;
-      img.dataset.overlay = part.overlay;
       img.title = part.name;
+      img.dataset.overlay = part.overlay;
+      img.dataset.category = category;
 
       img.addEventListener('click', () => {
-        // Clear 'selected' class from all parts
         partSlider.querySelectorAll('img').forEach(i => i.classList.remove('selected'));
-        // Mark clicked part as selected
         img.classList.add('selected');
 
-        // Set overlay image
         const overlayImg = document.getElementById(`${category}Image`);
         if (overlayImg) {
           overlayImg.src = `Images/Parts/${category.charAt(0).toUpperCase() + category.slice(1)}/Overlays/${part.overlay}`;
           overlayImg.alt = part.name;
         }
 
-        // Update the selected price for this category and refresh total
         selectedPrices[category] = part.price;
         updateEstimatedPrice();
       });
@@ -95,23 +87,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Sidebar buttons click handlers
   buttons.forEach(button => {
     button.addEventListener('click', () => {
-      // Remove active class from all buttons
       buttons.forEach(btn => btn.classList.remove('active'));
-      // Add active class to clicked button
       button.classList.add('active');
-
-      // Load parts for selected category
       const category = button.dataset.category;
       loadParts(category);
     });
   });
 
-  // Load default category (forks)
-  loadParts('forks');
+  const colorPicker = document.getElementById('colorPicker');
+  const tintOverlay = document.getElementById('tintOverlay');
+  colorPicker.addEventListener('change', () => {
+    const color = colorPicker.value;
+    tintOverlay.style.backgroundColor = color;
+  });
 
-  // Initial update of price
+  // Load default (forks)
+  loadParts('forks');
   updateEstimatedPrice();
 });
