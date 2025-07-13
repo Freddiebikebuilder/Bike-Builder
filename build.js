@@ -96,12 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const colorPicker = document.getElementById('colorPicker');
-  const tintOverlay = document.getElementById('tintOverlay');
-  colorPicker.addEventListener('change', () => {
-    const color = colorPicker.value;
-    tintOverlay.style.backgroundColor = color;
-  });
+
 
   // Load default (forks)
   loadParts('forks');
