@@ -16,31 +16,33 @@
       <button data-category="forks" class="active">Forks</button>
       <button data-category="wheels">Wheels</button>
       <button data-category="handlebars">Handlebars</button>
+      <button data-category="rearShocks">Rear Shocks</button>
     </aside>
 
     <div class="build-container">
       <div class="frame-area">
         <h2>Selected Frame</h2>
-        
         <div class="frame-preview">
-          <!-- 🔁 REPLACED your old <img> tags with this container -->
-          <div class="bike-overlay-wrapper">
-            <img id="selectedFrame" class="bike-layer" src="" alt="Selected Frame" />
-            <img id="forksImage" class="bike-layer" src="" alt="Fork" />
-            <img id="wheelsImage" class="bike-layer" src="" alt="Wheels" />
-            <img id="handlebarsImage" class="bike-layer" src="" alt="Handlebars" />
-          </div>
+          <div id="tintOverlay"></div>
+          <img id="selectedFrame" src="" alt="Selected Frame" />
+          <img id="forksImage" class="overlay-part" src="" alt="Fork" />
+          <img id="wheelsImage" class="overlay-part" src="" alt="Wheels" />
+          <img id="handlebarsImage" class="overlay-part" src="" alt="Handlebars" />
+          <img id="rearShocksImage" class="overlay-part" src="" alt="Rear Shock" />
         </div>
 
-        <!-- Added Estimated Price Display Here -->
-        <div id="priceEstimate" style="margin-top: 15px; font-size: 18px; font-weight: bold; color: #333;">
-          Estimated Price: £0
-        </div>
+        <label for="colorPicker">Frame Tint:</label>
+        <select id="colorPicker">
+          <option value="">None</option>
+          <option value="#ff0000">Red</option>
+          <option value="#007bff">Blue</option>
+          <option value="#28a745">Green</option>
+          <option value="#000000">Black</option>
+          <option value="#ffffff">White</option>
+        </select>
 
-        <!-- Frame price display added here -->
-        <div id="framePrice" style="margin-top: 10px; font-size: 16px; color: #555;">
-          Frame Price: £0
-        </div>
+        <div id="priceEstimate">Estimated Price: £0</div>
+        <div id="framePrice">Frame Price: £0</div>
       </div>
 
       <div class="parts-slider-area">
