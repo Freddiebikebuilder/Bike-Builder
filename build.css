@@ -56,7 +56,7 @@ header {
   background-color: #d0d0d0;
 }
 
-/* Main build container */
+/* Main build container: right of sidebar */
 .build-container {
   flex: 1;
   display: flex;
@@ -106,21 +106,7 @@ header {
   display: block;
 }
 
-/* Tint overlay */
-#tintOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.3;
-  background-color: transparent;
-  z-index: 2;
-  pointer-events: none;
-  border-radius: 10px;
-}
-
-/* Overlay part images */
+/* Overlay images */
 .overlay-part {
   position: absolute;
   top: 0;
@@ -130,19 +116,16 @@ header {
   object-fit: contain;
   opacity: 0.95;
   pointer-events: none;
-  z-index: 3;
   user-select: none;
 }
 
-/* Z-index stacking by part */
 #selectedFrame { z-index: 1; }
-#tintOverlay   { z-index: 2; }
-#forksImage    { z-index: 3; }
-#wheelsImage   { z-index: 4; }
-#handlebarsImage { z-index: 5; }
-#rearShocksImage { z-index: 6; }
+#forksImage { z-index: 2; }
+#wheelsImage { z-index: 3; }
+#handlebarsImage { z-index: 4; }
+#rearShocksImage { z-index: 5; }
 
-/* Parts slider area */
+/* Parts slider at bottom */
 .parts-slider-area {
   width: 100%;
   padding: 0 15px 8px;
@@ -159,7 +142,7 @@ header {
   user-select: none;
 }
 
-/* Scrollable part thumbnails */
+/* Horizontal scrollable part list */
 .part-slider {
   display: flex;
   overflow-x: auto;
@@ -186,7 +169,7 @@ header {
   border: 2px solid #e0e0e0;
 }
 
-/* Part preview thumbnails */
+/* Individual part image */
 .part-slider img {
   width: 150px;
   height: auto;
