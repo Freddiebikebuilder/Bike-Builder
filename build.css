@@ -5,8 +5,8 @@ body {
   padding: 0;
   background: #f4f4f4;
   height: 100vh;
-  overflow-y: auto; /* allow vertical scrolling */
-  overflow-x: hidden; /* prevent horizontal scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 header {
@@ -21,7 +21,7 @@ header {
 /* Main layout with sidebar and main content */
 .layout {
   display: flex;
-  min-height: calc(100vh - 72px); /* allow layout to grow */
+  min-height: calc(100vh - 72px);
   overflow: hidden;
 }
 
@@ -36,42 +36,6 @@ header {
   box-sizing: border-box;
   overflow-y: auto;
   flex-shrink: 0;
-
-  /* === Overlay System for Bike Builder === */
-
-.bike-overlay-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.bike-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-  z-index: 1;
-}
-
-#selectedFrame {
-  z-index: 1;
-}
-
-#forksImage {
-  z-index: 2;
-}
-
-#wheelsImage {
-  z-index: 3;
-}
-
-#handlebarsImage {
-  z-index: 4;
-}
-
   border-right: 1px solid #ccc;
 }
 
@@ -92,7 +56,7 @@ header {
   background-color: #d0d0d0;
 }
 
-/* Main build container: right of sidebar */
+/* Main build container */
 .build-container {
   flex: 1;
   display: flex;
@@ -100,7 +64,7 @@ header {
   padding: 10px 20px 0;
   gap: 5px;
   box-sizing: border-box;
-  overflow-y: auto; /* allow scroll if content overflows */
+  overflow-y: auto;
   overflow-x: hidden;
   position: relative;
 }
@@ -142,7 +106,21 @@ header {
   display: block;
 }
 
-/* Overlay images */
+/* Tint overlay */
+#tintOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  background-color: transparent;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+/* Overlay part images */
 .overlay-part {
   position: absolute;
   top: 0;
@@ -152,11 +130,19 @@ header {
   object-fit: contain;
   opacity: 0.95;
   pointer-events: none;
-  z-index: 10;
+  z-index: 3;
   user-select: none;
 }
 
-/* Parts slider at bottom */
+/* Z-index stacking by part */
+#selectedFrame { z-index: 1; }
+#tintOverlay   { z-index: 2; }
+#forksImage    { z-index: 3; }
+#wheelsImage   { z-index: 4; }
+#handlebarsImage { z-index: 5; }
+#rearShocksImage { z-index: 6; }
+
+/* Parts slider area */
 .parts-slider-area {
   width: 100%;
   padding: 0 15px 8px;
@@ -173,7 +159,7 @@ header {
   user-select: none;
 }
 
-/* Horizontal scrollable part list */
+/* Scrollable part thumbnails */
 .part-slider {
   display: flex;
   overflow-x: auto;
@@ -200,7 +186,7 @@ header {
   border: 2px solid #e0e0e0;
 }
 
-/* Individual part image */
+/* Part preview thumbnails */
 .part-slider img {
   width: 150px;
   height: auto;
